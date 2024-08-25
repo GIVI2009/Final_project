@@ -1,12 +1,12 @@
 from datetime import datetime
 
-from fastapi import Path, HTTPException, APIRouter
+from fastapi import APIRouter, HTTPException, Path
 from pydantic import BaseModel, Field, HttpUrl
 from starlette import status
 
 import dao
 
-api_router = APIRouter(prefix='/api')
+api_router = APIRouter(prefix="/api")
 
 
 class NewTravel(BaseModel):
@@ -48,10 +48,8 @@ def delete_travel(travel_id: int = Path(gt=0, description="ID of the product")):
     return None
 
 
-@api_router.put('/travel/')
-# @app.put('/travel/{travel_id}')
+@api_router.put("/travel/")
 def update_travel(updated_travel: TravelData) -> NewTravel:
-    # def update_travel(updated_travel: NewTravel, travel_id: int = Path(gt=0, description='Id of the travel')) -> NewTravel:
     travel = dao.get_travel_by_id(travel_id=updated_travel.id)
     if not travel:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not found")

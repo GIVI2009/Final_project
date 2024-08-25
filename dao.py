@@ -2,7 +2,7 @@ from database import Travel, session
 
 
 def create_travel(
-        title: str, description: str, price: float, country: str, image, hotel_class: int, date_start, date_end
+    title: str, description: str, price: float, country: str, image, hotel_class: int, date_start, date_end
 ) -> Travel:
     travel = Travel(
         title=title,
@@ -38,7 +38,7 @@ def delete_travel(travel_id) -> None:
 
 
 def update_travel(travel_id: int, travel_data: dict) -> Travel:
-    travel_data['image'] = str(travel_data['image'])
+    travel_data["image"] = str(travel_data["image"])
     session.query(Travel).filter(Travel.id == travel_id).update(travel_data)
     session.commit()
     travel = session.query(Travel).filter(Travel.id == travel_id).first()

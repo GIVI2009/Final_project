@@ -11,20 +11,16 @@ web_router = APIRouter(
 )
 
 
-@web_router.get('/')
-@web_router.post('/')
+@web_router.get("/")
+@web_router.post("/")
 def index(request: Request):
-    context = {
-        'request': request,
-        'travels': dao.get_all_travel(20, 0),
-        "title": "Main page"}
+    context = {"request": request, "travels": dao.get_all_travel(20, 0), "title": "Main page"}
     return templates.TemplateResponse("index.html", context=context)
 
 
-@web_router.get('/detailed_search')
+@web_router.get("/detailed_search")
 def detailed_search(request: Request):
     context = {
-        'request': request,
-
+        "request": request,
     }
     return templates.TemplateResponse("search_html.html", context=context)

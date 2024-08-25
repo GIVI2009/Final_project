@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from api.travels import api_router
 from database import create_tables
 from web.web_travels import web_router
