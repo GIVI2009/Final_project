@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ {% block content %}
+
+    {% for travel in travels %}
+    <div class="card" style="width: 18rem;">
+  <img src="{{travel.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ travel.title }}</h5>
+    <p class="card-text">{{travel.description}}</p>
+    <a href="#" class="btn btn-primary">More information</a>
+  </div>
+</div>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+    {% endblock %}
