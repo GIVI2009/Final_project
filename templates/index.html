@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
  {% block content %}
 
+    <h1>Welcome to the Tourism Agency</h1>
+    <div>
+        <a href="/register/"><button>Register</button></a>
+        <a href="/login/"><button>Login</button></a>
+    </div>
     {% for travel in travels %}
     <div class="card" style="width: 18rem;">
   <img src="{{travel.image}}" class="card-img-top" alt="...">
