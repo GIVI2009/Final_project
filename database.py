@@ -26,10 +26,18 @@ class Travel(Base):
 
 
 engine = create_engine(config.DB_PATH, echo=config.DEBUG)
-
 Session = sessionmaker(bind=engine)
 session = Session()
 
 
 def create_tables():
     Base.metadata.create_all(engine)
+
+
+# Додаємо функцію get_db() для отримання сесії БД
+def get_db():
+    db = Session()
+    try:
+        yield db
+    finally:
+        db.close()
